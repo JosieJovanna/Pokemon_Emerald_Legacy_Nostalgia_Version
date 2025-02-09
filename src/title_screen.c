@@ -10,6 +10,7 @@
 #include "m4a.h"
 #include "main.h"
 #include "main_menu.h"
+#include "overworld.h"
 #include "palette.h"
 #include "reset_rtc_screen.h"
 #include "berry_fix_program.h"
@@ -683,6 +684,13 @@ static void MainCB2(void)
 // Shine the Pokémon logo two more times, and fade in the version banner
 static void Task_TitleScreenPhase1(u8 taskId)
 {
+		// Load immediately if L or R is pressed
+		if (JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		{
+				SetMainCallback2(CB2_ContinueSavedGame);
+				DestroyTask(taskId);
+				return;
+		}
     // Skip to next phase when A, B, Start, or Select is pressed
     if (JOY_NEW(A_B_START_SELECT) || gTasks[taskId].tSkipToNext)
     {
@@ -733,6 +741,13 @@ static void Task_TitleScreenPhase2(u8 taskId)
 {
     u32 yPos;
 
+		// Load immediately if L or R is pressed
+		if (JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		{
+				SetMainCallback2(CB2_ContinueSavedGame);
+				DestroyTask(taskId);
+				return;
+		}
     // Skip to next phase when A, B, Start, or Select is pressed
     if (JOY_NEW(A_B_START_SELECT) || gTasks[taskId].tSkipToNext)
     {
@@ -779,6 +794,13 @@ static void Task_TitleScreenPhase2(u8 taskId)
 // Show Rayquaza silhouette and process main title screen input
 static void Task_TitleScreenPhase3(u8 taskId)
 {
+		// Load immediately if L or R is pressed
+		if (JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		{
+				SetMainCallback2(CB2_ContinueSavedGame);
+				DestroyTask(taskId);
+				return;
+		}
     if (JOY_NEW(A_BUTTON) || JOY_NEW(START_BUTTON))
     {
         FadeOutBGM(4);

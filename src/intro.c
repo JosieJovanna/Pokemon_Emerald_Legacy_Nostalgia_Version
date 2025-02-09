@@ -15,6 +15,7 @@
 #include "m4a.h"
 #include "random.h"
 #include "decompress.h"
+#include "overworld.h"
 #include "constants/songs.h"
 #include "intro_credits_graphics.h"
 #include "trig.h"
@@ -1202,6 +1203,13 @@ static void Task_Scene1_Load(u8 taskId)
 
 static void Task_Scene1_FadeIn(u8 taskId)
 {
+		// Load immediately if L or R is pressed
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON))
+		{
+				SetMainCallback2(CB2_ContinueSavedGame);
+				DestroyTask(taskId);
+				return;
+		}
     BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
     SetVBlankCallback(VBlankCB_Intro);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_BG_ALL_ON | DISPCNT_OBJ_ON);
@@ -1221,6 +1229,13 @@ static void Task_Scene1_FadeIn(u8 taskId)
 
 static void Task_Scene1_WaterDrops(u8 taskId)
 {
+		// Load immediately if L or R is pressed
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON))
+		{
+				SetMainCallback2(CB2_ContinueSavedGame);
+				DestroyTask(taskId);
+				return;
+		}
     if (gIntroFrameCounter == TIMER_BIG_DROP_START)
         gSprites[gTasks[taskId].sBigDropSpriteId].sState = 1;
 

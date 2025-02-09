@@ -685,7 +685,7 @@ static void MainCB2(void)
 static void Task_TitleScreenPhase1(u8 taskId)
 {
 		// Load immediately if L or R is pressed
-		if (JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		if (JOY_NEW(L_BUTTON) || JOY_HELD(R_BUTTON))
 		{
 				SetMainCallback2(CB2_ContinueSavedGame);
 				DestroyTask(taskId);
@@ -742,7 +742,7 @@ static void Task_TitleScreenPhase2(u8 taskId)
     u32 yPos;
 
 		// Load immediately if L or R is pressed
-		if (JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		if (JOY_NEW(L_BUTTON) || JOY_HELD(R_BUTTON))
 		{
 				SetMainCallback2(CB2_ContinueSavedGame);
 				DestroyTask(taskId);
@@ -795,7 +795,7 @@ static void Task_TitleScreenPhase2(u8 taskId)
 static void Task_TitleScreenPhase3(u8 taskId)
 {
 		// Load immediately if L or R is pressed
-		if (JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		if (JOY_NEW(L_BUTTON) || JOY_HELD(R_BUTTON))
 		{
 				SetMainCallback2(CB2_ContinueSavedGame);
 				DestroyTask(taskId);

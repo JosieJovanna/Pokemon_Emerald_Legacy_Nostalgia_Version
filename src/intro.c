@@ -1066,6 +1066,12 @@ static void SerialCB_CopyrightScreen(void)
 
 static u8 SetUpCopyrightScreen(void)
 {
+		// Quickload
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		{
+				SetMainCallback2(CB2_ContinueSavedGame);
+				return;
+		}
     switch (gMain.state)
     {
     case 0:
@@ -1151,6 +1157,9 @@ void CB2_InitCopyrightScreenAfterBootup(void)
             Sav2_ClearSetDefault();
         SetPokemonCryStereo(gSaveBlock2Ptr->optionsSound);
         InitHeap(gHeap, HEAP_SIZE);
+				// Quickload
+				if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+						SetMainCallback2(CB2_ContinueSavedGame);
     }
 }
 
@@ -1163,6 +1172,13 @@ void CB2_InitCopyrightScreenAfterTitleScreen(void)
 
 static void Task_Scene1_Load(u8 taskId)
 {
+		// Quickload
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		{
+				SetMainCallback2(CB2_ContinueSavedGame);
+				DestroyTask(taskId);
+				return;
+		}
     SetVBlankCallback(NULL);
     sIntroCharacterGender = gSaveBlock2Ptr->playerGender; // Loads the gender in the save file to show in into. If no save file, defaults to male
     IntroResetGpuRegs();
@@ -1203,8 +1219,8 @@ static void Task_Scene1_Load(u8 taskId)
 
 static void Task_Scene1_FadeIn(u8 taskId)
 {
-		// Load immediately if L or R is pressed
-		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON))
+		// Quickload
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
 		{
 				SetMainCallback2(CB2_ContinueSavedGame);
 				DestroyTask(taskId);
@@ -1229,8 +1245,8 @@ static void Task_Scene1_FadeIn(u8 taskId)
 
 static void Task_Scene1_WaterDrops(u8 taskId)
 {
-		// Load immediately if L or R is pressed
-		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON))
+		// Quickload
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
 		{
 				SetMainCallback2(CB2_ContinueSavedGame);
 				DestroyTask(taskId);
@@ -1314,6 +1330,13 @@ static void SpriteCB_Sparkle(struct Sprite *sprite)
 
 static void Task_Scene1_PanUp(u8 taskId)
 {
+		// Quickload
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		{
+				SetMainCallback2(CB2_ContinueSavedGame);
+				DestroyTask(taskId);
+				return;
+		}
     if (gIntroFrameCounter < TIMER_END_PAN_UP)
     {
         s32 offset;
@@ -1359,12 +1382,27 @@ static void Task_Scene1_PanUp(u8 taskId)
 
 static void Task_Scene1_End(u8 taskId)
 {
+		// Quickload
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		{
+				SetMainCallback2(CB2_ContinueSavedGame);
+				DestroyTask(taskId);
+				return;
+		}eturn;
+		}
     if (gIntroFrameCounter > TIMER_START_SCENE_2)
         gTasks[taskId].func = Task_Scene2_Load;
 }
 
 static void Task_Scene2_Load(u8 taskId)
 {
+		// Quickload
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		{
+				SetMainCallback2(CB2_ContinueSavedGame);
+				DestroyTask(taskId);
+				return;
+		}
     IntroResetGpuRegs();
     SetVBlankCallback(NULL);
     ResetSpriteData();
@@ -1384,6 +1422,14 @@ static void Task_Scene2_Load(u8 taskId)
 static void Task_Scene2_CreateSprites(u8 taskId)
 {
     u8 spriteId;
+		
+		// Quickload
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		{
+				SetMainCallback2(CB2_ContinueSavedGame);
+				DestroyTask(taskId);
+				return;
+		}
 
     // Load sprite sheets
     if (sIntroCharacterGender == MALE)
@@ -1429,6 +1475,14 @@ static void Task_Scene2_CreateSprites(u8 taskId)
 static void Task_Scene2_BikeRide(u8 taskId)
 {
     u16 offset;
+		
+		// Quickload
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		{
+				SetMainCallback2(CB2_ContinueSavedGame);
+				DestroyTask(taskId);
+				return;
+		}
 
     if (gIntroFrameCounter == TIMER_TORCHIC_EXIT)
     {
@@ -1471,6 +1525,13 @@ static void Task_Scene2_BikeRide(u8 taskId)
 
 static void Task_Scene2_End(u8 taskId)
 {
+		// Quickload
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		{
+				SetMainCallback2(CB2_ContinueSavedGame);
+				DestroyTask(taskId);
+				return;
+		}
     if (gIntroFrameCounter > TIMER_START_SCENE_3)
         gTasks[taskId].func = Task_Scene3_Load;
 }
@@ -1729,6 +1790,13 @@ static void SpriteCB_Manectric(struct Sprite *sprite)
 
 static void Task_Scene3_Load(u8 taskId)
 {
+		// Quickload
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
+		{
+				SetMainCallback2(CB2_ContinueSavedGame);
+				DestroyTask(taskId);
+				return;
+		}
     IntroResetGpuRegs();
     LZ77UnCompVram(sIntroPokeball_Gfx, (void *)VRAM);
     LZ77UnCompVram(sIntroPokeball_Tilemap, (void *)(BG_CHAR_ADDR(1)));

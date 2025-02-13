@@ -684,8 +684,8 @@ static void MainCB2(void)
 // Shine the Pokémon logo two more times, and fade in the version banner
 static void Task_TitleScreenPhase1(u8 taskId)
 {
-		// Load immediately if L or R is pressed
-		if (JOY_NEW(L_BUTTON) || JOY_HELD(R_BUTTON))
+		// Quickload
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
 		{
 				SetMainCallback2(CB2_ContinueSavedGame);
 				DestroyTask(taskId);
@@ -741,8 +741,8 @@ static void Task_TitleScreenPhase2(u8 taskId)
 {
     u32 yPos;
 
-		// Load immediately if L or R is pressed
-		if (JOY_NEW(L_BUTTON) || JOY_HELD(R_BUTTON))
+		// Quickload
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
 		{
 				SetMainCallback2(CB2_ContinueSavedGame);
 				DestroyTask(taskId);
@@ -794,8 +794,8 @@ static void Task_TitleScreenPhase2(u8 taskId)
 // Show Rayquaza silhouette and process main title screen input
 static void Task_TitleScreenPhase3(u8 taskId)
 {
-		// Load immediately if L or R is pressed
-		if (JOY_NEW(L_BUTTON) || JOY_HELD(R_BUTTON))
+		// Quickload
+		if (JOY_HELD(L_BUTTON) || JOY_HELD(R_BUTTON) || JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
 		{
 				SetMainCallback2(CB2_ContinueSavedGame);
 				DestroyTask(taskId);

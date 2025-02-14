@@ -1388,7 +1388,6 @@ static void Task_Scene1_End(u8 taskId)
 				SetMainCallback2(CB2_ContinueSavedGame);
 				DestroyTask(taskId);
 				return;
-		}eturn;
 		}
     if (gIntroFrameCounter > TIMER_START_SCENE_2)
         gTasks[taskId].func = Task_Scene2_Load;

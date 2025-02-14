@@ -1,3 +1,13 @@
+# This Fork
+
+Hi! I didn't do like any of this work. All I wanted with this fork was to undo some of the tweaks that broke my immersion -- then I found more tweaks I wanted. I may end up adding some more mods, even! The current changes are:
+- Removed double-speed surfing (but kept "sprint" surfing at the previous edited "normal" speed): ruined the chill vibe. I'd download Emerald Mini if I wanted to speed run, two times speed was an absurd choice I'll be frank.
+- Changed "Pokemon Legacy Version" logo back to the original "Pokemon Emerald Version" image: frankly, the line widths were off and I want to pretend I'm in the past, thanks.
+- Increased shiny odds to be just below one percent: this way, it's actually possible to find them, and adds some wonder to every encounter.
+- Added quick loading by pressing or holding L/R during the opening, launching into the current saved game: because static shiny hunting shouldn't be so painful.
+- Restored fix to use RTC RNG rather than fixed seed because I am not a nerd I will *not* RNG manip: and for same reason as above.
+- Decreased Battle Frontier item prices: I want to face the brains but I gain no joy from grinding.
+
 # Pokémon Emerald Legacy
 
 Emerald Legacy is meant to serve as a finale to the trio of planned projects in the Legacy Trilogy led by [TheSmithPlays](https://www.youtube.com/@smithplayspokemon). It is made using the [Pokémon Emerald Disassembly](https://github.com/pret/pokeemerald) made by the [Pret](https://pret.github.io/) team. This game is focused on refining a game that is considered a classic by many people into a nostalgic but improved experience with 20+ years of hindsight. Emerald is a great game with a ton of flaws when you use that experience to really look at it under a lens. Terrible pokemon pool, Weird team building choices, A great story idea executed poorly, baffling rival decisions, and one of the worst E4s. This game with all of these problems manages to shrug them off with memorable dex additions, fantastic gym leader ace choices, abilities, no more stat xp, Battle frontier, original ideas to the series, and overall a solid game. The Legacy Project aims to take what is good in a game and improve it while bringing its flaws up to that same level. 

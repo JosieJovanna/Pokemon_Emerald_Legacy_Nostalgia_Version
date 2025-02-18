@@ -58,3 +58,5 @@ prefabs.json
 *.ss8
 *.ss9
 *.cheats
+*.xcf
+*.pyxel

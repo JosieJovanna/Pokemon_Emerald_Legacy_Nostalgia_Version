@@ -1,7 +1,7 @@
 const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
 {
     [ITEM_NONE] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-		// Custom Items
+		// Rookie Badge TODO: make own icons
 		[ITEM_CHAMPION_BADGE] = {gItemIcon_MasterBall, gItemIconPalette_MasterBall},
 		[ITEM_ROOKIE_BADGE] = {gItemIcon_PokeBall, gItemIconPalette_PokeBall},
     // Pokeballs

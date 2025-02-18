@@ -3138,21 +3138,7 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-// Key items
-
-    [ITEM_MACH_BIKE] =
-    {
-        .name = _("MACH BIKE"),
-        .itemId = ITEM_MACH_BIKE,
-        .price = 0,
-        .description = sMachBikeDesc,
-        .importance = 1,
-        .registrability = TRUE,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_FIELD,
-        .fieldUseFunc = ItemUseOutOfBattle_Bike,
-        .secondaryId = MACH_BIKE,
-    },
+// Rookie Badge (Key Items)
 
     [ITEM_ROOKIE_BADGE] =
     {
@@ -3176,6 +3162,22 @@ const struct Item gItems[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_ChampionBadge,
         .secondaryId = 0,
+    },
+
+// Key items
+
+    [ITEM_MACH_BIKE] =
+    {
+        .name = _("MACH BIKE"),
+        .itemId = ITEM_MACH_BIKE,
+        .price = 0,
+        .description = sMachBikeDesc,
+        .importance = 1,
+        .registrability = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_Bike,
+        .secondaryId = MACH_BIKE,
     },
 
     [ITEM_COIN_CASE] =

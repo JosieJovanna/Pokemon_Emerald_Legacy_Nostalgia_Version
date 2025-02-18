@@ -268,10 +268,8 @@ static u8 CheckTrainer(u8 objectEventId)
         if (GetHillTrainerFlag(objectEventId))
             return 0;
     }
-		else if (CheckBagHasItem(ITEM_ROOKIE_BADGE, 1))
+		else if (CheckBagHasItem(ITEM_ROOKIE_BADGE, 1)) // Rookie Badge Check
 		{
-				RemoveBagItem(ITEM_ROOKIE_BADGE, 1);
-				AddBagItem(ITEM_CHAMPION_BADGE, 1);
         // do not return - forces encounter
 		}
     else

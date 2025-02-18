@@ -1,16 +1,16 @@
 static const u8 sDummyDesc[] = _(
     "?????");
 
-// Custom Items
+// Rookie Badge
 static const u8 sRookieBadgeDesc[] = _(
-    "All trainers\n"
-    "will approach.\n"
-    "Use to toggle.");
+    "Forces trainers\n"
+    "to battle.\n"
+    "Use to undo.");
 		
 static const u8 sChampionBadgeDesc[] = _(
-    "Recognizes you\n"
-    "as champion.\n"
-    "Use to toggle.");
+    "Use to force\n"
+    "trainers to\n"
+    "battle you.");
 
 // Pokeballs
 static const u8 sMasterBallDesc[] = _(

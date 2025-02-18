@@ -1,8 +1,10 @@
 #ifndef GUARD_ITEM_USE_H
 #define GUARD_ITEM_USE_H
 
+// Rookie Badge
 void ItemUseOutOfBattle_ChampionBadge(u8);
 void ItemUseOutOfBattle_RookieBadge(u8);
+
 void ItemUseOutOfBattle_Mail(u8);
 void ItemUseOutOfBattle_Bike(u8);
 void ItemUseOutOfBattle_Rod(u8);

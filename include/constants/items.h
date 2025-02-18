@@ -417,7 +417,7 @@
 #define ITEM_MAGMA_EMBLEM 375
 #define ITEM_OLD_SEA_MAP 376
 
-// Custom
+// Rookie Badge
 #define ITEM_ROOKIE_BADGE 377
 #define ITEM_CHAMPION_BADGE 378
 

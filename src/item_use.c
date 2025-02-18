@@ -179,19 +179,26 @@ u8 CheckIfItemIsTMHMOrEvolutionStone(u16 itemId)
         return 0;
 }
 
-// Custom Items
+// Rookie Badge
 void ItemUseOutOfBattle_ChampionBadge(u8 taskId) 
 {
-		RemoveBagItem(ITEM_CHAMPION_BADGE, 1);
-		AddBagItem(ITEM_ROOKIE_BADGE, 1);
-    Task_FadeAndCloseBagMenu(taskId);
+		if (CheckBagHasItem(ITEM_ROOKIE_BADGE, 1))
+		{
+				// do nothing - already has rookie badge
+				// TODO: display message
+		}
+		else
+		{
+				AddBagItem(ITEM_ROOKIE_BADGE, 1);
+				// TODO: display message
+		}
 }
 
 void ItemUseOutOfBattle_RookieBadge(u8 taskId)
 {
 		RemoveBagItem(ITEM_ROOKIE_BADGE, 1);
-		AddBagItem(ITEM_CHAMPION_BADGE, 1);
-    Task_FadeAndCloseBagMenu(taskId);
+		Task_FadeAndCloseBagMenu(taskId);
+		// TODO: display message
 }
 
 // Mail in the bag menu can't have a message but it can be checked (view the mail background, no message)

@@ -21,6 +21,7 @@
 #include "trainer_see.h"
 #include "field_message_box.h"
 #include "sound.h"
+#include "item.h"
 #include "strings.h"
 #include "trainer_hill.h"
 #include "secret_base.h"
@@ -1087,6 +1088,12 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
 {
     InitTrainerBattleVariables();
     sTrainerBattleMode = TrainerBattleLoadArg8(data);
+		
+		// Custom Item - remove rookie badge if on
+		if (CheckBagHasItem(ITEM_ROOKIE_BADGE, 1))
+		{
+				RemoveBagItem(ITEM_ROOKIE_BADGE, 1);
+		}
 
     switch (sTrainerBattleMode)
     {
@@ -1239,7 +1246,9 @@ static void UNUSED SetBattledTrainerFlag(void)
 
 bool8 HasTrainerBeenFought(u16 trainerId)
 {
-    return FlagGet(TRAINER_FLAGS_START + trainerId);
+		if (CheckBagHasItem(ITEM_ROOKIE_BADGE, 1) == FALSE)
+			return FlagGet(TRAINER_FLAGS_START + trainerId);
+		return FALSE;
 }
 
 void SetTrainerFlag(u16 trainerId)

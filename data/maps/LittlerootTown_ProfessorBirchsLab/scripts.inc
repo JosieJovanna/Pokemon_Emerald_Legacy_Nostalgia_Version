@@ -1049,7 +1049,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ScottAboardSSTidalCall::
 	end
 	
 LittlerootTown_ProfessorBirchsLab_Text_GiveChampionsBadge:
-  .string "Here, take this champ!$"
+  .string "Here take this, champ!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork:
 	.string "Hunh? PROF. BIRCH?\p"

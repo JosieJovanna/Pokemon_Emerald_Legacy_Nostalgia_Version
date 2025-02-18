@@ -302,12 +302,31 @@ LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForJohtoStarter:
 LittlerootTown_ProfessorBirchsLab_EventScript_Aide::
 	lock
 	faceplayer
+	checkitem ITEM_CHAMPION_BADGE
+	goto_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_AideGiveBadgeIfNoRookieBadge
 	goto_if_ge VAR_BIRCH_LAB_STATE, 3, LittlerootTown_ProfessorBirchsLab_EventScript_AideReceivedStarter
 	goto_if_set FLAG_BIRCH_AIDE_MET, LittlerootTown_ProfessorBirchsLab_EventScript_AideAlreadyMet
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork, MSGBOX_DEFAULT
 	setflag FLAG_BIRCH_AIDE_MET
 	release
 	end
+	
+LittlerootTown_ProfessorBirchsLab_EventScript_AideGiveBadgeIfNoRookieBadge::
+	checkitem ITEM_ROOKIE_BADGE
+	goto_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_AideGiveBadge
+	goto_if_ge VAR_BIRCH_LAB_STATE, 3, LittlerootTown_ProfessorBirchsLab_EventScript_AideReceivedStarter
+	goto_if_set FLAG_BIRCH_AIDE_MET, LittlerootTown_ProfessorBirchsLab_EventScript_AideAlreadyMet
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork, MSGBOX_DEFAULT
+	setflag FLAG_BIRCH_AIDE_MET
+	release
+	end
+	
+LittlerootTown_ProfessorBirchsLab_EventScript_AideGiveBadge::
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_GiveChampionsBadge, MSGBOX_DEFAULT
+	giveitem ITEM_CHAMPION_BADGE, 1
+	release
+	end
+	
 
 LittlerootTown_ProfessorBirchsLab_EventScript_AideAlreadyMet::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork, MSGBOX_DEFAULT
@@ -1028,6 +1047,9 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ScottAboardSSTidalCall::
 	clearflag FLAG_SCOTT_CALL_BATTLE_FRONTIER
 	releaseall
 	end
+	
+LittlerootTown_ProfessorBirchsLab_Text_GiveChampionsBadge:
+  .string "Here, take this champ!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork:
 	.string "Hunh? PROF. BIRCH?\p"

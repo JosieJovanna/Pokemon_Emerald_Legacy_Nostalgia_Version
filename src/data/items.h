@@ -3154,6 +3154,30 @@ const struct Item gItems[] =
         .secondaryId = MACH_BIKE,
     },
 
+    [ITEM_ROOKIE_BADGE] =
+    {
+        .name = _("ROOKIE BADGE"),
+        .itemId = ITEM_ROOKIE_BADGE,
+        .price = 0,
+        .description = sRookieBadgeDesc,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_RookieBadge,
+        .secondaryId = 0,
+    },
+
+    [ITEM_CHAMPION_BADGE] =
+    {
+        .name = _("CHAMP. BADGE"),
+        .itemId = ITEM_CHAMPION_BADGE,
+        .price = 0,
+        .description = sChampionBadgeDesc,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_ChampionBadge,
+        .secondaryId = 0,
+    },
+
     [ITEM_COIN_CASE] =
     {
         .name = _("COIN CASE"),

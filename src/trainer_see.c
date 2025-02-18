@@ -9,6 +9,7 @@
 #include "script_movement.h"
 #include "sprite.h"
 #include "task.h"
+#include "item.h"
 #include "trainer_see.h"
 #include "trainer_hill.h"
 #include "util.h"
@@ -18,6 +19,7 @@
 #include "constants/event_object_movement.h"
 #include "constants/field_effects.h"
 #include "constants/trainer_types.h"
+#include "constants/items.h"
 
 // this file's functions
 static u8 CheckTrainer(u8 objectEventId);
@@ -266,9 +268,15 @@ static u8 CheckTrainer(u8 objectEventId)
         if (GetHillTrainerFlag(objectEventId))
             return 0;
     }
+		else if (CheckBagHasItem(ITEM_ROOKIE_BADGE, 1))
+		{
+				RemoveBagItem(ITEM_ROOKIE_BADGE, 1);
+				AddBagItem(ITEM_CHAMPION_BADGE, 1);
+        // do not return - forces encounter
+		}
     else
     {
-        if (GetTrainerFlagFromScriptPointer(scriptPtr))
+				if (GetTrainerFlagFromScriptPointer(scriptPtr))
             return 0;
     }
 

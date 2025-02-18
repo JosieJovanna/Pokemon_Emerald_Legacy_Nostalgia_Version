@@ -183,22 +183,34 @@ u8 CheckIfItemIsTMHMOrEvolutionStone(u16 itemId)
 // ENABLE
 void ItemUseOutOfBattle_ChampionBadge(u8 taskId) 
 {
-		if (CheckBagHasItem(ITEM_ROOKIE_BADGE, 1))
-		{
-				DestroyTask(taskId); // Already has badge; do nothing.
-		}
-		else // Enable
-		{
-				AddBagItem(ITEM_ROOKIE_BADGE, 1);
-				DisplayItemMessage(taskId, FONT_NORMAL, gText_Custom_RookieBadge_ENABLE, CloseItemMessage);
-				// TODO: Consider fading out of bag when in bag; destroying task should be enough?
-		}
+    if (CheckBagHasItem(ITEM_ROOKIE_BADGE, 1) == FALSE)
+    {
+        AddBagItem(ITEM_ROOKIE_BADGE, 1);
+        if (!gTasks[taskId].tUsingRegisteredKeyItem) // in bag
+        {
+            Task_FadeAndCloseBagMenu(taskId);
+            return;
+        }
+    }
+    
+    ScriptUnfreezeObjectEvents();
+    UnlockPlayerFieldControls();
+    DestroyTask(taskId);
 }
 // DISABLE
 void ItemUseOutOfBattle_RookieBadge(u8 taskId)
 {
-		RemoveBagItem(ITEM_ROOKIE_BADGE, 1);
-		DisplayItemMessage(taskId, FONT_NORMAL, gText_Custom_RookieBadge_DISABLE, Task_FadeAndCloseBagMenu);
+    RemoveBagItem(ITEM_ROOKIE_BADGE, 1);
+    if (!gTasks[taskId].tUsingRegisteredKeyItem) // in bag
+    {
+        Task_FadeAndCloseBagMenu(taskId);
+    }
+    else 
+    {
+        ScriptUnfreezeObjectEvents();
+        UnlockPlayerFieldControls();
+        DestroyTask(taskId);
+    }
 }
 
 // Mail in the bag menu can't have a message but it can be checked (view the mail background, no message)

@@ -3131,7 +3131,7 @@ extern const u8 gText_PkmnsNickname[];
 extern const u8 gText_TellHimTheWords[];
 
 // Rookie Badge
-extern const u8 gText_Custom_RookieBadge_ENABLE[]  = _("Pinned on the ROOKIE BADGE!");
-extern const u8 gText_Custom_RookieBadge_DISABLE[] = _("Pinned on the CHAMPION BADGE!");
+extern const u8 gText_Custom_RookieBadge_ENABLE[];
+extern const u8 gText_Custom_RookieBadge_DISABLE[];
 
 #endif // GUARD_STRINGS_H

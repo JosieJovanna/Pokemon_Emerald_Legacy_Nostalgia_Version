@@ -1904,3 +1904,6 @@ const u8 gText_Stats_eggGroup_DRAGON[]      = _("DRAGON");
 const u8 gText_Stats_eggGroup_UNDISCOVERED[]= _("---");
 const u8 gText_Dex_SEEN[]   = _("SEEN");
 const u8 gText_Dex_OWN[]    = _("OWN");
+// Rookie Badge
+const u8 gText_Custom_RookieBadge_ENABLE[]  = _("Pinned on the ROOKIE BADGE!");
+const u8 gText_Custom_RookieBadge_DISABLE[] = _("Pinned on the CHAMPION BADGE!");

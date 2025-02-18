@@ -180,25 +180,25 @@ u8 CheckIfItemIsTMHMOrEvolutionStone(u16 itemId)
 }
 
 // Rookie Badge
+// ENABLE
 void ItemUseOutOfBattle_ChampionBadge(u8 taskId) 
 {
 		if (CheckBagHasItem(ITEM_ROOKIE_BADGE, 1))
 		{
-				// do nothing - already has rookie badge
-				// TODO: display message
+				DestroyTask(taskId); // Already has badge; do nothing.
 		}
-		else
+		else // Enable
 		{
 				AddBagItem(ITEM_ROOKIE_BADGE, 1);
-				// TODO: display message
+				DisplayItemMessage(taskId, FONT_NORMAL, gText_Custom_RookieBadge_ENABLE, CloseItemMessage);
+				// TODO: Consider fading out of bag when in bag; destroying task should be enough?
 		}
 }
-
+// DISABLE
 void ItemUseOutOfBattle_RookieBadge(u8 taskId)
 {
 		RemoveBagItem(ITEM_ROOKIE_BADGE, 1);
-		Task_FadeAndCloseBagMenu(taskId);
-		// TODO: display message
+		DisplayItemMessage(taskId, FONT_NORMAL, gText_Custom_RookieBadge_DISABLE, Task_FadeAndCloseBagMenu);
 }
 
 // Mail in the bag menu can't have a message but it can be checked (view the mail background, no message)

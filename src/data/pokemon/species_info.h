@@ -7919,8 +7919,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_MIGHTYENA] =
     {
         .baseHP        = 75,
-        .baseAttack    = 95,
-        .baseDefense   = 75,
+        .baseAttack    = 100,
+        .baseDefense   = 80,
         .baseSpeed     = 80,
         .baseSpAttack  = 60,
         .baseSpDefense = 60,

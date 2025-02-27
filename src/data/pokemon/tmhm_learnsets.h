@@ -6948,6 +6948,7 @@ const union {
         .TOXIC = TRUE,
         .HIDDEN_POWER = TRUE,
         .SUNNY_DAY = TRUE,
+				.BRICK_BREAK = TRUE,
         .TAUNT = TRUE,
         .HYPER_BEAM = TRUE,
         .PROTECT = TRUE,

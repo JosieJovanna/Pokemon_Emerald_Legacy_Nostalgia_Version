@@ -4326,6 +4326,7 @@ static const u16 sMightyenaLevelUpLearnset[] = {
     LEVEL_UP_MOVE(41, MOVE_TAUNT),
     LEVEL_UP_MOVE(46, MOVE_TORMENT),
     LEVEL_UP_MOVE(50, MOVE_SUPER_FANG),
+    LEVEL_UP_MOVE(52, MOVE_BRICK_BREAK),
     LEVEL_UP_END
 };
 

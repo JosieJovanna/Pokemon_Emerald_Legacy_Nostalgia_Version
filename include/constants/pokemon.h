@@ -125,7 +125,7 @@
 #define ABILITY_HIDDEN 2
 
 // Shiny odds
-#define SHINY_ODDS 655 // Actual probability is SHINY_ODDS/65536 // 256: .39% // 512: .78% // 655: ~1% // 328: .5%
+#define SHINY_ODDS 1311 // Actual probability is SHINY_ODDS/65536 // 256: .39% // 512: .78% // 655: ~1% // 328: .5%
 
 // Ribbon IDs used by TV and Pokénav
 #define CHAMPION_RIBBON       0

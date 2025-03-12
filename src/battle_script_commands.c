@@ -3265,10 +3265,10 @@ static void Cmd_getexp(void)
         if (GetBattlerSide(gBattlerFainted) != B_SIDE_OPPONENT || (gBattleTypeFlags &
              (BATTLE_TYPE_LINK
               | BATTLE_TYPE_RECORDED_LINK
-              | BATTLE_TYPE_TRAINER_HILL
-              | BATTLE_TYPE_FRONTIER
+              //| BATTLE_TYPE_TRAINER_HILL
+              //| BATTLE_TYPE_FRONTIER
               | BATTLE_TYPE_SAFARI
-              | BATTLE_TYPE_BATTLE_TOWER
+              //| BATTLE_TYPE_BATTLE_TOWER
               | BATTLE_TYPE_EREADER_TRAINER)))
         {
             gBattleScripting.getexpState = 6; // goto last case
@@ -3306,7 +3306,7 @@ static void Cmd_getexp(void)
 
             if (viaExpShare) // at least one mon is getting exp via exp share
             {
-                *exp = SAFE_DIV(calculatedExp / 2, viaSentIn);
+                *exp = SAFE_DIV(calculatedExp / 1, viaSentIn); // no exp share penalty
                 if (*exp == 0)
                     *exp = 1;
 

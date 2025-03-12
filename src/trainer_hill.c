@@ -621,7 +621,10 @@ void PrintOnTrainerHillRecordsWindow(void)
 // the timer had to be xored by the encryption key in Sav2.
 static u32 GetTimerValue(u32 *src)
 {
-    return *src;
+    u32 t;
+    t = *src;
+    t = t / 2; // half the time because I hate grinding! :)
+    return t;
 }
 
 static void SetTimerValue(u32 *dst, u32 val)

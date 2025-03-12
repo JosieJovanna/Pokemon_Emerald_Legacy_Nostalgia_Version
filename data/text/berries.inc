@@ -116,17 +116,16 @@ Route123_BerryMastersHouse_Text_ComeAgain:
 Route123_BerryMastersHouse_Text_HeardAGoodSayingLately:
 	.string "The way my husband grows BERRIES,\n"
 	.string "oh, he's the best in the world.\p"
-	.string "He makes me proud, that he does.\p"
-	.string "Incidentally, child, have you heard\n"
-	.string "a good saying lately?$"
+	.string "He makes me proud, that he does.$"
 
 Route123_BerryMastersHouse_Text_InspirationalTakeThis:
-	.string "Ah! What a remarkable saying!\n"
+	.string "Ah! What a remarkable man!\n"
 	.string "Inspirational, it is!\p"
+	.string "For listening to me go on,\n"
 	.string "I want you to have this.$"
 
 Route123_BerryMastersHouse_Text_GoodSayingTakeThis:
-	.string "Oh! A good saying it is.\n"
+	.string "Oh! You grow BERRIES too?\n"
 	.string "You're quite remarkable.\p"
 	.string "I want you to have this.$"
 

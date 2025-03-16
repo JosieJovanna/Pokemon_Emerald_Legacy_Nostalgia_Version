@@ -3265,8 +3265,8 @@ static void Cmd_getexp(void)
         if (GetBattlerSide(gBattlerFainted) != B_SIDE_OPPONENT || (gBattleTypeFlags &
              (BATTLE_TYPE_LINK
               | BATTLE_TYPE_RECORDED_LINK
-              //| BATTLE_TYPE_TRAINER_HILL
-              //| BATTLE_TYPE_FRONTIER
+              | BATTLE_TYPE_TRAINER_HILL
+              | BATTLE_TYPE_FRONTIER
               | BATTLE_TYPE_SAFARI
               //| BATTLE_TYPE_BATTLE_TOWER
               | BATTLE_TYPE_EREADER_TRAINER)))
@@ -3310,7 +3310,7 @@ static void Cmd_getexp(void)
                 if (*exp == 0)
                     *exp = 1;
 
-                gExpShareExp = calculatedExp / 2 / viaExpShare;
+                gExpShareExp = calculatedExp / 1 / viaExpShare; // no exp share penalty
                 if (gExpShareExp == 0)
                     gExpShareExp = 1;
             }
@@ -3445,7 +3445,7 @@ static void Cmd_getexp(void)
         }
         break;
     case 4: // lvl up if necessary
-        if (gBattleControllerExecFlags == 0)
+        if (gBattleControllerExecFlags == 0) // TODO: this condition probably has something to do with the level up crash I experienced
         {
             gActiveBattler = gBattleStruct->expGetterBattlerId;
             if (gBattleBufferB[gActiveBattler][0] == CONTROLLER_TWORETURNVALUES && gBattleBufferB[gActiveBattler][1] == RET_VALUE_LEVELED_UP)

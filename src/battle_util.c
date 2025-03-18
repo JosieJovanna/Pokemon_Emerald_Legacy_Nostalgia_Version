@@ -2773,11 +2773,12 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     do
                     {
                         // Pick either MOVE_EFFECT_SLEEP, MOVE_EFFECT_POISON or MOVE_EFFECT_BURN
-                        gBattleCommunication[MOVE_EFFECT_BYTE] = Random() & 3;
+                        //gBattleCommunication[MOVE_EFFECT_BYTE] = Random() & 3;
+                        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_SLEEP; // EDITED
                     } while (gBattleCommunication[MOVE_EFFECT_BYTE] == 0);
                     // Replace MOVE_EFFECT_BURN with MOVE_EFFECT_PARALYSIS
-                    if (gBattleCommunication[MOVE_EFFECT_BYTE] == MOVE_EFFECT_BURN)
-                        gBattleCommunication[MOVE_EFFECT_BYTE] += (MOVE_EFFECT_PARALYSIS - MOVE_EFFECT_BURN);
+                    //if (gBattleCommunication[MOVE_EFFECT_BYTE] == MOVE_EFFECT_BURN)
+                    //    gBattleCommunication[MOVE_EFFECT_BYTE] += (MOVE_EFFECT_PARALYSIS - MOVE_EFFECT_BURN);
 
                     gBattleCommunication[MOVE_EFFECT_BYTE] += MOVE_EFFECT_AFFECTS_USER;
                     BattleScriptPushCursor();

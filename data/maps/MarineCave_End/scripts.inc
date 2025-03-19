@@ -26,7 +26,7 @@ MarineCave_End_OnTransition:
 MarineCave_End_EventScript_ShowKyogre::
 	clearflag FLAG_HIDE_MARINE_CAVE_KYOGRE
 	setvar VAR_TEMP_1, 1
-	
+	return
 
 MarineCave_End_EventScript_Kyogre::
 	lockall

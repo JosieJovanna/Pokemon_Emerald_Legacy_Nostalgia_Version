@@ -65,8 +65,8 @@
       "x": 10,
       "y": 26,
       "elevation": 3,
-      "var": "VAR_TEMP_2",
-      "var_value": "2",
+      "var": "VAR_TEMP_1",
+      "var_value": "1",
       "script": "MarineCave_End_EventScript_KyogreArchie"
     }
   ],

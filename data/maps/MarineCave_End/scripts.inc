@@ -26,11 +26,10 @@ MarineCave_End_OnTransition:
 MarineCave_End_EventScript_ShowKyogre::
 	clearflag FLAG_HIDE_MARINE_CAVE_KYOGRE
 	setvar VAR_TEMP_1, 1
-	return
+	
 
 MarineCave_End_EventScript_Kyogre::
 	lockall
-	call MarineCave_End_EventScript_Archie
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	applymovement LOCALID_KYOGRE, MarineCave_End_Movement_KyogreApproach
@@ -50,8 +49,32 @@ MarineCave_End_EventScript_Kyogre::
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, MarineCave_End_EventScript_DefeatedKyogre
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, MarineCave_End_EventScript_RanFromKyogre
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, MarineCave_End_EventScript_RanFromKyogre
-	setvar VAR_SHOULD_END_ABNORMAL_WEATHER, 1
 	setflag FLAG_DEFEATED_KYOGRE
+	releaseall
+	end
+
+MarineCave_End_EventScript_KyogreArchie::
+	lockall
+	call MarineCave_End_EventScript_Archie
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_KYOGRE, MarineCave_End_Movement_KyogreApproach
+	waitmovement 0
+	waitse
+	playmoncry SPECIES_KYOGRE, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setvar VAR_LAST_TALKED, LOCALID_KYOGRE
+	setwildbattle SPECIES_KYOGRE, 70
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_TEMP_1, 0
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, MarineCave_End_EventScript_DefeatedKyogreArchie
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, MarineCave_End_EventScript_RanFromKyogreArchie
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, MarineCave_End_EventScript_RanFromKyogreArchie
 	goto MarineCave_End_EventScript_ArchieLeaves
 	releaseall
 	end
@@ -77,17 +100,23 @@ MarineCave_End_EventScript_ArchiePostBattle::
 	return
 
 MarineCave_End_EventScript_DefeatedKyogre::
-	fadescreenswapbuffers FADE_TO_BLACK
-	removeobject VAR_LAST_TALKED
-	fadescreenswapbuffers FADE_FROM_BLACK
-	setvar VAR_SHOULD_END_ABNORMAL_WEATHER, 1
 	setflag FLAG_DEFEATED_KYOGRE
-	goto MarineCave_End_EventScript_ArchieLeaves
+	goto Common_EventScript_RemoveStaticPokemon
 	end
 
 MarineCave_End_EventScript_RanFromKyogre::
 	setvar VAR_0x8004, SPECIES_KYOGRE
 	goto Common_EventScript_LegendaryFlewAway
+	end
+
+MarineCave_End_EventScript_DefeatedKyogreArchie::
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject VAR_LAST_TALKED
+	fadescreenswapbuffers FADE_FROM_BLACK
+	goto MarineCave_End_EventScript_ArchieLeaves
+	end
+
+MarineCave_End_EventScript_RanFromKyogreArchie::
 	msgbox MarineCave_End_Text_ArchieRanFromKyogre, MSGBOX_DEFAULT
 	closemessage
 	goto MarineCave_End_EventScript_ArchieLeaves_NoText

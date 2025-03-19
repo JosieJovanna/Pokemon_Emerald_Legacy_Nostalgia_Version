@@ -30,8 +30,6 @@ TerraCave_End_EventScript_ShowGroudon::
 
 TerraCave_End_EventScript_Groudon::
 	lockall
-	call TerraCave_End_EventScript_Maxie
-MarineCave_End_EventScript_BeatMaxie::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	applymovement LOCALID_GROUDON, TerraCave_End_Movement_GroudonApproach
@@ -51,8 +49,32 @@ MarineCave_End_EventScript_BeatMaxie::
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, TerraCave_End_EventScript_DefeatedGroudon
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, TerraCave_End_EventScript_RanFromGroudon
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, TerraCave_End_EventScript_RanFromGroudon
-	setvar VAR_SHOULD_END_ABNORMAL_WEATHER, 1
 	setflag FLAG_DEFEATED_GROUDON
+	releaseall
+	end
+
+TerraCave_End_EventScript_GroudonMaxie::
+	lockall
+	call TerraCave_End_EventScript_Maxie
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_GROUDON, TerraCave_End_Movement_GroudonApproach
+	waitmovement 0
+	waitse
+	playmoncry SPECIES_GROUDON, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setvar VAR_LAST_TALKED, LOCALID_GROUDON
+	setwildbattle SPECIES_GROUDON, 70
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_TEMP_1, 0
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, TerraCave_End_EventScript_DefeatedGroudonMaxie
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, TerraCave_End_EventScript_RanFromGroudonMaxie
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, TerraCave_End_EventScript_RanFromGroudonMaxie
 	goto TerraCave_End_EventScript_MaxieLeaves
 	releaseall
 	end
@@ -78,17 +100,23 @@ MarineCave_End_EventScript_MaxiePostBattle::
 	return
 
 TerraCave_End_EventScript_DefeatedGroudon::
-	fadescreenswapbuffers FADE_TO_BLACK
-	removeobject VAR_LAST_TALKED
-	fadescreenswapbuffers FADE_FROM_BLACK
-	setvar VAR_SHOULD_END_ABNORMAL_WEATHER, 1
 	setflag FLAG_DEFEATED_GROUDON
-	goto TerraCave_End_EventScript_MaxieLeaves
+	goto Common_EventScript_RemoveStaticPokemon
 	end
 
 TerraCave_End_EventScript_RanFromGroudon::
 	setvar VAR_0x8004, SPECIES_GROUDON
 	goto Common_EventScript_LegendaryFlewAway
+	end
+
+TerraCave_End_EventScript_DefeatedGroudonMaxie::
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject VAR_LAST_TALKED
+	fadescreenswapbuffers FADE_FROM_BLACK
+	goto TerraCave_End_EventScript_MaxieLeaves
+	end
+
+TerraCave_End_EventScript_RanFromGroudonMaxie::
 	msgbox TerraCave_End_Text_MaxieRanFromGroudon, MSGBOX_DEFAULT
 	closemessage
 	goto TerraCave_End_EventScript_MaxieLeaves_NoText

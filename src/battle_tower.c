@@ -3385,7 +3385,7 @@ u8 GetFrontierEnemyMonLevel(u8 lvlMode)
 
 s32 GetHighestLevelInPlayerParty(void)
 {
-    // Get average
+    // Get average // I mean lowest again
     s32 highestLevel = 100;
 		s32 lowestLevel = 0;
     s32 i;
@@ -3403,7 +3403,7 @@ s32 GetHighestLevelInPlayerParty(void)
         }
     }
 
-    return (highestLevel + lowestLevel) / 2;
+    return lowestLevel; // (highestLevel + lowestLevel) / 2;
 }
 
 // Frontier Trainer parties are roughly scaled in difficulty with higher trainer IDs, so scale IVs as well

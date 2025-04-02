@@ -3386,8 +3386,8 @@ u8 GetFrontierEnemyMonLevel(u8 lvlMode)
 s32 GetHighestLevelInPlayerParty(void)
 {
     // Get average // I mean lowest again
-    s32 highestLevel = 100;
-		s32 lowestLevel = 0;
+    s32 highestLevel = 0;
+		s32 lowestLevel = 100;
     s32 i;
 
     for (i = 0; i < PARTY_SIZE; i++)
@@ -3396,9 +3396,9 @@ s32 GetHighestLevelInPlayerParty(void)
             && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG)
         {
             s32 level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL, NULL);
-            if (level < highestLevel)
+            if (level > highestLevel)
                 highestLevel = level;
-						if (level > lowestLevel)
+						if (level < lowestLevel)
 								lowestLevel = level;
         }
     }

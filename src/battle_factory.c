@@ -310,7 +310,7 @@ static void GenerateOpponentMons(void)
     u32 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
     u32 winStreak = gSaveBlock2Ptr->frontier.factoryWinStreaks[battleMode][lvlMode];
-    u32 challengeNum = winStreak / FRONTIER_STAGES_PER_CHALLENGE;
+    u32 challengeNum = (winStreak / FRONTIER_STAGES_PER_CHALLENGE) < 1 ? 0 : (winStreak / FRONTIER_STAGES_PER_CHALLENGE) - 1; // EDIT: nerf opponents to last round
     gFacilityTrainers = gBattleFrontierTrainers;
 
     do
@@ -765,7 +765,7 @@ void FillFactoryBrainParty(void)
     u8 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     u8 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
     u8 challengeNum = gSaveBlock2Ptr->frontier.factoryWinStreaks[battleMode][lvlMode] / FRONTIER_STAGES_PER_CHALLENGE;
-    fixedIV = GetFactoryMonFixedIV(challengeNum + 2, FALSE);
+    fixedIV = GetFactoryMonFixedIV(challengeNum + 1, FALSE); // EDIT: fuck you noland
     monLevel = SetFacilityPtrsGetLevel();
     i = 0;
     otId = T1_READ_32(gSaveBlock2Ptr->playerTrainerId);
@@ -866,20 +866,23 @@ u8 GetNumPastRentalsRank(u8 battleMode, u8 lvlMode)
     u8 ret;
     u8 rents = gSaveBlock2Ptr->frontier.factoryRentsCount[battleMode][lvlMode];
 
-    if (rents < 15)
+    if (rents < 5)
         ret = 0;
-    else if (rents < 22)
+    else if (rents < 10)
         ret = 1;
-    else if (rents < 29)
+    else if (rents < 14)
         ret = 2;
-    else if (rents < 36)
+    else if (rents < 20)
         ret = 3;
-    else if (rents < 43)
+    else if (rents < 25)
         ret = 4;
     else
         ret = 5;
-
-    return ret;
+		
+		if (ret > 4)
+		    return 6;
+		else
+		    return ret + 2; // EDIT: change rental curve
 }
 
 u32 GetAiScriptsInBattleFactory(void)

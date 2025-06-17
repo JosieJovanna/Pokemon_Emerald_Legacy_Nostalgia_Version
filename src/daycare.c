@@ -256,8 +256,7 @@ static u16 TakeSelectedPokemonFromDaycare(struct DaycareMon *daycareMon)
     if (GetMonData(&pokemon, MON_DATA_LEVEL) != MAX_LEVEL 
     && !levelCappedNuzlocke(GetMonData(&pokemon, MON_DATA_LEVEL)))
     {
-        experience = GetMonData(&pokemon, MON_DATA_EXP) + daycareMon->steps;
-				experience *= 3; // triple daycare experience fuck you
+        experience = GetMonData(&pokemon, MON_DATA_EXP) + (daycareMon->steps * 100 - 5000); // EDIT: just way more steps for exp
         levelCap = getLevelCap();
         if (experience <= gExperienceTables[gSpeciesInfo[species].growthRate][levelCap])
         {
